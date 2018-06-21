@@ -1,36 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> 
-	<link rel="stylesheet" href="css/winestyle.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<style>
- body{
-background: rgba(230,50,68,1);
-background: -moz-linear-gradient(-45deg, rgba(230,50,68,1) 0%, rgba(230,50,68,1) 40%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(230,50,68,1)), color-stop(40%, rgba(230,50,68,1)), color-stop(40%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
-background: -webkit-linear-gradient(-45deg, rgba(230,50,68,1) 0%, rgba(230,50,68,1) 40%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(230,50,68,1) 0%, rgba(230,50,68,1) 40%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(230,50,68,1) 0%, rgba(230,50,68,1) 40%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%);
-background: linear-gradient(135deg, rgba(230,50,68,1) 0%, rgba(230,50,68,1) 40%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e63244', endColorstr='#ffffff', GradientType=1 );
-} main{color: #666 } .imageIndex{width: 100% } a{color: white; text-decoration: none; } </style> <title></title>
-</head>
-<body>
-	<header></header>
-	<main></main>
-	<footer></footer>
-	<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-	<script src="js/initFirebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
+ <!DOCTYPE html>
+  <html>
+    <head>
+    <script>var page = "index"; </script>
+      <link rel="shortcut icon" href="img/LOGO.png">
+    <meta charset="utf-8">
+      <link rel="shortcut icon" href="img/LOGO.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/wineStyle.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <style>
+      body{ 
 
-	<script src="main.js"></script>
-	<script src="js/auth.js"></script>
-	<script src="js/index.js"></script>
 
-</body>
-</html>
+background: #9c27b0;
+background: -moz-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, #9c27b0), color-stop(37%, #9c27b0), color-stop(37%, #ffffff), color-stop(100%, #ffffff));
+background: -webkit-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: -o-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: -ms-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: linear-gradient(135deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c27b0', endColorstr='#ffffff', GradientType=1 );
+
+} </style>
+      <title>Wine Community</title>
+    </head>
+    <body>
+
+    <header></header>
+    <main></main>
+    <footer></footer>
+
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+<script src="components/firebase.js"></script>
+
+    <script
+          src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="components/auth.js"></script>
+    <script src="components/profiles.js"></script>
+    <script src="components/footer.js"></script>
+    
+    <script src="components/templateIndex.js"></script>
+    <script src="js/initM.js"></script>
+    <script>listenerAuth();</script>
+    
+    </body>
+  </html>
+        

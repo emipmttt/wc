@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="shortcut icon" href="img/LOGO.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <link rel="stylesheet" href="css/wineStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title>Wine Community</title>
+        <style>
+         body{
+background: #9c27b0;
+background: -moz-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, #9c27b0), color-stop(37%, #9c27b0), color-stop(37%, #ffffff), color-stop(100%, #ffffff));
+background: -webkit-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: -o-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: -ms-linear-gradient(-45deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+background: linear-gradient(135deg, #9c27b0 0%, #9c27b0 37%, #ffffff 37%, #ffffff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c27b0', endColorstr='#ffffff', GradientType=1 );
+ } .cont{margin:0 23% 0 308px; } @media (max-width: 992px) {.cont{margin: 0 5%; } } </style>
+
+    <title>Wine Community</title>
+</head>
+<body>
+<br>
+<main></main>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+<script src="components/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<script>
+function listenerAuth() {
+    firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        console.log(uid);
+
+        $.ajax({
+            data:  {"uid":uid},
+            url:   'php/verifyUser.php',
+            type:  'post',
+            success:  function (response) {
+                if (response == 1 ) {
+
+                        $("main").html(`
+                             <br />
+      <br />
+      <br />
+      <br />
+      <br />      <br />
+      <br />      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-red-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>      <br />
+      <br />
+      <br />
+      <br />      <br />
+      <br />      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />      <br />
+      <br />
+      <br />
+      <br />`).attr('align', 'center');
+
+                        $.ajax({
+                        data:  {"uid":uid},
+                        url:   'php/getProfile.php',
+                        type:  'post',
+                        success:  function (response) {
+                          a = response;
+                          b = JSON.parse(response);
+                          c = JSON.stringify(b);
+                          localStorage.uData = c;
+                        }
+                        });
+
+                    console.log(localStorage.uData);
+
+                    setTimeout(function () {
+                        location.href="home.html";
+                    },1000);
+
+
+                }else if (response == 2) {
+                    $("main").html(`
+
+  <div class="card cont">
+    <div class="card-content">
+        <img src="img/LOGO-WC-HOME.png" width="50%">
+      <span class="card-title">Completa tu perfil</span>
+      <p>Es importante que tu perfil este completo, así tus amigos podrán encontrarte más facilmente.</p>
+      <div class="input-field">
+        <i class="material-icons prefix">person</i>
+        <input id="displayName" type="text" class="validate" maxlength="200">
+        <label for="displayName">Nombre</label>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">person</i>
+        <input id="description" type="text" class="validate" maxlength="2000" value="wine 4 ever">
+        <label for="description">Sobre ti</label>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">public</i>
+        <input id="country" type="text" class="validate"  maxlength="50">
+        <label for="country">País</label>
+      </div>
+      <i class="fa fa-venus-mars" style="font-size:27px"></i> Genero:
+        <label>
+          <input id="m" name="gender" type="radio" />
+          <span>Masculino</span>
+        </label>
+        <label>
+          <input id="f" name="gender" type="radio" />
+          <span>Femenino</span>
+        </label>
+      <div class="row">
+        <div class="col s4">
+          <div class="input-field">
+            <i class="fa fa-calendar prefix"></i>
+            <input id="day" type="text" class="validate" maxlength="2">
+            <label for="day">Día DD</label>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="input-field">
+            <input id="month" type="text" class="validate" maxlength="2">
+            <label for="month">Mes MM</label>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="input-field">
+            <input id="year" type="text" class="validate" maxlength="4">
+            <label for="year">Año YYYY</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-action">
+      <button id="saveProfile" class=" btn blue">Guardar Perfil</button> 
+      <div id="notice"></div>
+    </div>
+  </div>
+  <br />
+  `);
+
+    var gender;
+    $("#m").click(function() {gender = "Masculino"});
+    $("#f").click(function() {gender = "Femenino"});
+
+$("#saveProfile").click(function() {
+    var displayName = $("#displayName").val();
+    var description = $("#description").val();
+    var country = $("#country").val();
+    var day = $("#day").val();
+    var month = $("#month").val();
+    var year = $("#year").val();
+
+    $.ajax({
+        data:  {"uid":uid,"email":email,"photoURL":photoURL,"displayName":displayName,"description":description,"country":country,"gender":gender,"day":day,"month":month,"year":year},
+        url:   'php/createProfile.php',
+        type:  'post',
+        beforeSend: function () {
+          $("#notice").html(`
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+          `);
+        },
+        success:  function (response) {
+          console.log(response);
+          if (response == 1) {
+            location.href="home.html";
+          }
+        }
+      });
+    });
+                }
+            }
+        });   
+
+      } else {
+        
+      }
+    });
+}
+
+listenerAuth();
+
+</script>
+    
+</body>
+</html>
