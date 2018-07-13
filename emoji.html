@@ -4,42 +4,112 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-		.wine-emoji{
-			background: red;
+		#emojiBox{
+			display: none;
+			position: fixed;
+			bottom: 0;
+			background: #e9e9e9;
+			max-height: 150px;
+			width: 100%
+		}
+
+		.emoji{
 			display: inline-block;
-			border-right: 3px;
-			box-shadow: 0px 1px 4px rgba(0,0,0,.5)
+			width: 40px;
+			height: 40px;
+			margin: 2px;
 		}
 
-		.wine-emoji i {
-			position: absolute;
-			cursor: pointer;
+		.emojisHere{
 
-		}
-
-		.wine-emoji textarea{
-			border:none;
-			background: none;
-			margin-left: 30px
 		}
 	</style>
 </head>
 <body>
 
-	<div class='wine-emoji'>
-		<i>icon</i>
-		<textarea></textarea>
+<div>
+		<textarea id="input"></textarea>
+	<div id="emojiButton">:)</div>
+	<div id="emojiBox"></div>
+
+	<div id="emojisHere">
+		
+:sad::cry::smile::sad: hoy me siento:sad:
+
+	</div>
+	<div id="emojisHere">
+		
+:sad::cry::smile::sad: hoy me siento:sad:
+
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<script>
-		
-		$(".wine-emoji i").click(function(event) {
-			
-		});
+		var emojises = {
+			smile : [":smile:","img/emojis/smile.png"],
+			sad : [":sad:","img/emojis/sad.png"],
+			cry : [":cry:","img/emojis/cry.png"]
+		}
+
+		function initWineEmoji (emojiInputName,emojiButtonName,emojiBoxName,emojis,emojiCloseCont) {		
+			var emojiButton = document.getElementById(emojiButtonName);
+			var emojiBox = document.getElementById(emojiBoxName);
+			var emojiInput = document.getElementById(emojiInputName);
+			emojiButton.addEventListener("click",function() {
+				emojiBox.style.display="inline-block";
+
+				emojiBox.innerHTML = "";
+
+				emojiBox.innerHTML += `<div onclick=emojiClose('${emojiBoxName}') align="right" style="margin-right:20px">${emojiCloseCont}</div>` ;
+
+				$.each(emojis, function(key, value){
+					emojiBox.innerHTML += "<img alt='"+key+"' src='"+ emojis[key][1] + "' class='emoji' onclick=addEmoji('"+emojis[key][0]+"','"+emojiInputName+"')>";
+				});
+
+
+			},false);
+
+			function setEmojis() {
+				//set emojis
+					
+					$.each(emojis, function(key, value){
+						var emojisHere = document.getElementById("emojisHere").innerHTML;
+						emojisHereStr = String(emojisHere);
+						var str1 = String(emojis[key][0]);
+						var re = new RegExp(str1, "g");
+						var emojisNow = emojisHere.replace(re, `<img src="${emojis[key][1]}" style="width:20px">`);
+						document.getElementById("emojisHere").innerHTML = emojisNow;
+					});
+			}
+
+setEmojis();
+
+		}
+
+				
+
+
+		function addEmoji(emoji,emojiInputName) {
+			var emojiInput = document.getElementById(emojiInputName);
+			emojiInput.value += emoji;
+			emojiInput.focus();
+		}
+
+		function emojiClose(emojiBoxName) {
+			document.getElementById(emojiBoxName).style.display="none";
+		}
+
+
+
+		initWineEmoji("input","emojiButton","emojiBox",emojises,"X");
+
+
+
 
 	</script>
-
 </body>
 </html>
