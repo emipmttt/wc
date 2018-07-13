@@ -56,7 +56,7 @@ array_push($commentsArray, "
 
 	$displayName = htmlentities($rowUser["displayName"]);
 	$photoURL = $rowUser["photoURL"];
-	$text = htmlentities($row["text"]);
+	$text = nl2br(htmlentities($row["text"]));
 	$titleArticle = htmlentities($row["titleArticle"]);
 		$grade = $row["grade"];
 	$place = htmlentities($row["place"]);
@@ -244,9 +244,9 @@ echo "</div>
         		</div>	
         		<br>
 				<h3>{$titleArticle}</h3>
-		<span>por <b>{$displayName}</b></span>
-				
-        <textarea class='articleText materialize-textarea black-text' disabled>{$text}</textarea>
+		<span>Por <b>{$displayName}</b></span>
+		<br>
+        <div class='articleText black-text'>{$text}</div>
       </div>
       <div>
         <div href='#' class='purple-text text-lighten-2 btn-flat'><i onclick='likeThis(\"{$id}\",\"{$uid}\")' id='like{$id}' class=' {$colorLike} ' style='font-size:25px'></i> <a href='#modalLikes' class='purple-text text-lighten-2 modal-trigger'><b style='margin-left:10px; font-size:20px' id='likesPost{$id}' onclick='showLikes(\"{$id}\")' >{$rowsLike}</b></a> </div>

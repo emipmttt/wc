@@ -5,6 +5,9 @@ function showTextPost() {
         <div class="input-field">
           <i class="material-icons prefix">short_text</i> 
           <textarea id="inputText" class="materialize-textarea" maxlength="2000"></textarea>
+
+          
+
           <label for="inputText">Comparte con el mundo</label>
         </div>
     <div id="sendPost" class="btn blue">Publicar</div>
@@ -603,4 +606,11 @@ function sendPostTaste(fileName,downURL) {
       });
 }
 
+
+    var emojises = {
+      smile : [":smile:","img/emojis/smile.png"],
+      sad : [":sad:","img/emojis/sad.png"],
+      cry : [":cry:","img/emojis/cry.png"]
+    }
+    initWineEmoji("input","emojiButton","emojiBox",emojises,"X");
 

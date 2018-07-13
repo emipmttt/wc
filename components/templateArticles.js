@@ -54,7 +54,7 @@ var data;
         </div>
         <div class='card-content'>
         
-      <textarea id='textarea1' disabled class='materialize-textarea black-text'>${data.text}</textarea>
+      <div class='black-text'>${data.text}</div>
 
         </div>
 
@@ -63,8 +63,7 @@ var data;
 
         `);
 
-setTimeout(function() {  $('#textarea1').val(data.text);
-  M.textareaAutoResize($('#textarea1'));},500)
+
       }
 
   });  

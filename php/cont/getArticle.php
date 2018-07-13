@@ -22,7 +22,7 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 	$typePost = $row['type'];
 	$titlePost = $row['titleArticle'];
 	$destPost = $row['visible'];
-	$text = $row['text'];
+	$text = nl2br($row['text']);
 	$downURLPost = $row['downURL'];
 	$categoryPost = $row['category'];
 	$displayName = $rowP['displayName'];
