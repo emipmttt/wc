@@ -1,0 +1,16 @@
+
+# Activar RewriteEngine
+RewriteEngine on
+ 
+
+RewriteRule ^eventos/?$ contenidos.html?c=eventos
+RewriteRule ^cursodevino/?$ contenidos.html?c=cursodevino
+RewriteRule ^notasdecata/?$ contenidos.html?c=notasdecata
+RewriteRule ^noticias/?$ contenidos.html?c=noticias
+RewriteRule ^enoturismo/?$ contenidos.html?c=enoturismo
+
+RewriteRule ^eventos/(\w+)/?$ articles.html?pn=$1
+RewriteRule ^cursodevino/(\w+)/?$ articles.html?pn=$1
+RewriteRule ^notasdecata/(\w+)/?$ articles.html?pn=$1
+RewriteRule ^noticias/(\w+)/?$ articles.html?pn=$1
+RewriteRule ^enoturismo/(\w+)/?$ articles.html?pn=$1
